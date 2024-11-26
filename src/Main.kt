@@ -14,8 +14,6 @@ fun competicion(atleta: Array<String>, pista: String){
         carrera.add(suelo.toString())
     }
 
-
-
 }
 
 
