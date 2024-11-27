@@ -23,7 +23,7 @@ fun main() {
 }
 
 fun competicion(atleta: Array<String>, pista: String):Boolean {
-    val mapa = mapOf("correr" to "_", "pista" to "|")
+    val mapa = mapOf("correr" to "_", "saltar" to "|")
     var carrera = mutableListOf<String>()
     var totalAcciones = atleta.size
     if (pista.length>atleta.size)
@@ -35,15 +35,15 @@ fun competicion(atleta: Array<String>, pista: String):Boolean {
     }
         var pistaAtleta = ""
         for (i in 0 until totalAcciones){
-            pistaAtleta += when{
+            pistaAtleta += when {
                 i >= carrera.size -> "?"
                 i >= atleta.size -> "?"
                 else -> {
-                    val segmento = carrera[i]
+                    val segmento = carrera[i].toString()
                     val estado = atleta[i]
-                    when (estado){
-                        "correr" -> if (segmento == mapa["correr"]) mapa["correr"] else "/"
-                        "saltar" -> if (segmento == mapa["saltar"]) mapa["saltar"]  else " X"
+                    when (estado) {
+                        "correr" -> if (segmento.toString() == mapa["correr"]) mapa["correr"] else "/"
+                        "saltar" -> if (segmento.toString() == mapa["saltar"]) mapa["saltar"] else "x"
                         else -> "?"
                     }
                 }
