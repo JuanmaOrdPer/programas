@@ -1,18 +1,57 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-val atleta1 = arrayOf("correr", "saltar", "correr", "saltar", "correr")
-val pista = "_|_|_"
-    competicion(atleta1, pista)
+    val atleta1 = arrayOf("correr", "saltar", "correr", "saltar", "correr")
+    val pista = "_|_|_"
+    println(competicion(atleta1, pista))
+
+    val atleta2= arrayOf("correr", "correr", "correr", "saltar", "correr")
+    val pista2  = "_|_|_"
+    println(competicion(atleta2, pista2))
+
+    val atleta3= arrayOf("correr", "correr", "saltar", "saltar", "correr")
+    val pista3  = "_|_|_"
+    println(competicion(atleta3, pista3))
+
+    val atleta4= arrayOf("correr", "correr", "saltar", "saltar", "correr")
+    val pista4  = "_|_|_|_"
+    println(competicion(atleta4, pista4))
+
+
+
 
 }
 
-fun competicion(atleta: Array<String>, pista: String){
+fun competicion(atleta: Array<String>, pista: String):Boolean {
     val mapa = mapOf("correr" to "_", "pista" to "|")
     var carrera = mutableListOf<String>()
+    var totalAcciones = atleta.size
+    if (pista.length>atleta.size)
+        totalAcciones = pista.length
+
+
     for (suelo in  pista) {
         carrera.add(suelo.toString())
     }
+        var pistaAtleta = ""
+        for (i in 0 until totalAcciones){
+            pistaAtleta += when{
+                i >= carrera.size -> "?"
+                i >= atleta.size -> "?"
+                else -> {
+                    val segmento = carrera[i]
+                    val estado = atleta[i]
+                    when (estado){
+                        "correr" -> if (segmento == mapa["correr"]) mapa["correr"] else "/"
+                        "saltar" -> if (segmento == mapa["saltar"]) mapa["saltar"]  else " X"
+                        else -> "?"
+                    }
+                }
+            }
+        }
+
+    print(pistaAtleta + "  ")
+    return (pista==pistaAtleta)
 
 }
 
