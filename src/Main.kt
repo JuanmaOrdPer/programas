@@ -16,14 +16,20 @@ fun main() {
 
     println(evaluarJuego(arrayOf(
         arrayOf("O", "O", "O"),
-        arrayOf("O", "O", "O"),
+        arrayOf("O", "X", "X"),
         arrayOf("O", "X", "X"))
     ))
 
     println(evaluarJuego(arrayOf(
         arrayOf("X", "O", "X"),
         arrayOf("X", "X", "O"),
-        arrayOf("X", "X", "X"))
+        arrayOf("X", "X", "X",))
+    ))
+
+    println(evaluarJuego(arrayOf(
+        arrayOf("X", "O", "X"),
+        arrayOf("X", "O", "O"),
+        arrayOf("X", "O", "X",))
     ))
 
 }
@@ -45,7 +51,8 @@ private fun evaluarJuego(juego: Array<Array<String>>): String {
             }
         }
     }
-
+    if (contarX > 6 || contarO > 6)
+        return "NULL"
 
     var resultado =""
     for (i in 0..2) {
@@ -65,9 +72,10 @@ private fun evaluarJuego(juego: Array<Array<String>>): String {
     if (juego[0][2] == juego[1][1] && juego[1][1] == juego[2][0] && juego[0][2] != "") {
         resultado=  juego[0][2]
     }
+    if (contarX == contarO )
+        resultado="EMPATE"
 
-
-    return if (contarX + contarO != 9) "EMPATE" else resultado
+    return  resultado
 }
 
 
