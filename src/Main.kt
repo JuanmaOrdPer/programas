@@ -55,6 +55,7 @@ private fun evaluarJuego(juego: Array<Array<String>>): String {
         return "NULL"
 
     var resultado =""
+
     for (i in 0..2) {
 
         if (juego[i][0] == juego[i][1] && juego[i][1] == juego[i][2] && juego[i][0] != "") {
