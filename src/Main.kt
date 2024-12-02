@@ -14,12 +14,12 @@ fun main() {
 
 }
 
-fun balanceada(str: String):Boolean {
+fun balanceada(formula: String):Boolean {
     val simbolos = mapOf("{" to "}" ,"[" to "]","(" to ")")
     val lista = mutableListOf<String>()
 
 
-    str.forEach {
+    formula.forEach {
         val simbolo = it.toString()
         val apertura = simbolos.containsKey(simbolo)
 
