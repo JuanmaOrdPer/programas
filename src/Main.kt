@@ -54,6 +54,7 @@ fun main() {
             5 -> {
                 println("Escribe un nombre")
                 nombre = readln()
+                agenda.eliminarContacto(nombre)
             }
 
             6 -> agenda.contactosDisponibles()
